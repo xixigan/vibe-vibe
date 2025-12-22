@@ -4,11 +4,12 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 // @ts-ignore
 import timeline from "vitepress-markdown-timeline";
 import { VitePWA } from 'vite-plugin-pwa'
-import { writeFile } from 'fs/promises'
-import { join as joinPath } from 'path'
+import { readFile, stat, writeFile } from 'fs/promises'
+import { isAbsolute as isAbsolutePath, join as joinPath, relative as relativePath } from 'path'
 
 const SITE_TITLE = "VibeVibe"
 const SITE_DESCRIPTION = "Vibe Coding 全栈实战教程 - 从 Next.js 到 AI 辅助开发，用 Vibe Coding 的方式重塑你的编程工作流。涵盖零基础入门、全栈开发、数据库、部署运维等核心主题。"
+const SITE_URL_FALLBACK = 'https://www.vibevibe.cn'
 
 function normalizeSiteUrl(url: string): string {
   return url.trim().replace(/\/+$/, '');
@@ -16,13 +17,13 @@ function normalizeSiteUrl(url: string): string {
 
 function resolveSiteUrl(): string {
   const raw =
-    process.env.SITE_URL ||
-    process.env.EDGEONE_PAGES_URL ||
+    process.env.SITE_URL || 
+    process.env.EDGEONE_PAGES_URL || 
     process.env.DEPLOY_URL ||
     process.env.URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '');
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
+    SITE_URL_FALLBACK;
 
-  if (!raw) return '';
   const normalized = normalizeSiteUrl(raw);
   if (/^https?:\/\//i.test(normalized)) return normalized;
   return `https://${normalized}`;
@@ -35,6 +36,121 @@ function urlPathForPage(relativePath: string): string {
   if (p === 'index.md') return '/';
   if (p.endsWith('/index.md')) return `/${p.slice(0, -'/index.md'.length)}/`;
   return `/${p.replace(/\.md$/, '.html')}`;
+}
+
+function stripFrontmatter(markdownSource: string): string {
+  if (!markdownSource.startsWith('---')) return markdownSource;
+  const match = markdownSource.match(/^---\s*\n[\s\S]*?\n---\s*\n/);
+  if (!match) return markdownSource;
+  return markdownSource.slice(match[0].length);
+}
+
+function parseSimpleFrontmatter(markdownSource: string): Record<string, string> {
+  if (!markdownSource.startsWith('---')) return {};
+  const match = markdownSource.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+  if (!match) return {};
+
+  const body = match[1];
+  const result: Record<string, string> = {};
+  for (const line of body.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const index = trimmed.indexOf(':');
+    if (index <= 0) continue;
+    const key = trimmed.slice(0, index).trim();
+    let value = trimmed.slice(index + 1).trim();
+    value = value.replace(/^['"]|['"]$/g, '').trim();
+    if (key) result[key] = value;
+  }
+  return result;
+}
+
+function stripMarkdown(markdownSource: string): string {
+  let text = stripFrontmatter(markdownSource);
+  text = text.replace(/```[\s\S]*?```/g, ' ');
+  text = text.replace(/`[^`]*`/g, ' ');
+  text = text.replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1');
+  text = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+  text = text.replace(/<style[\s\S]*?<\/style>/gi, ' ');
+  text = text.replace(/<script[\s\S]*?<\/script>/gi, ' ');
+  text = text.replace(/<[^>]+>/g, ' ');
+  text = text.replace(/^#{1,6}\s+/gm, '');
+  text = text.replace(/^>\s?/gm, '');
+  text = text.replace(/^\s*[-*+]\s+/gm, '');
+  text = text.replace(/^\s*\d+\.\s+/gm, '');
+  text = text.replace(/\s+/g, ' ').trim();
+  return text;
+}
+
+function truncateText(text: string, maxLength: number): string {
+  const normalized = text.replace(/\s+/g, ' ').trim();
+  if (normalized.length <= maxLength) return normalized;
+  return normalized.slice(0, maxLength).trim();
+}
+
+function extractDescriptionFromMarkdown(markdownSource: string): string | undefined {
+  const text = stripMarkdown(markdownSource);
+  if (!text) return undefined;
+  return truncateText(text, 160);
+}
+
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function safeCdata(text: string): string {
+  return text.replace(/]]>/g, ']]]]><![CDATA[>');
+}
+
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, '\\u003c');
+}
+
+function displayNameFromPathSegment(segment: string): string {
+  const decoded = decodeURIComponent(segment);
+  const withoutExt = decoded.replace(/\.html$/i, '');
+  return withoutExt.replace(/[-_]+/g, ' ').trim() || decoded;
+}
+
+function buildBreadcrumbList(urlPath: string, fullUrl: string): Record<string, unknown> | undefined {
+  const normalizedPath = urlPath.replace(/\?.*$/, '').replace(/#.*$/, '');
+  const trimmed = normalizedPath.replace(/^\/+|\/+$/g, '');
+  const parts = trimmed ? trimmed.split('/').filter(Boolean) : [];
+  if (parts.length === 0) return undefined;
+
+  const originMatch = fullUrl.match(/^(https?:\/\/[^/]+)/i);
+  const origin = originMatch ? originMatch[1] : SITE_URL;
+  const elements: Array<Record<string, unknown>> = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: '首页',
+      item: `${origin}/`
+    }
+  ];
+
+  let current = '';
+  for (let i = 0; i < parts.length; i += 1) {
+    current += `/${parts[i]}`;
+    const isLast = i === parts.length - 1;
+    const itemUrl = isLast ? fullUrl : `${origin}${current}/`;
+    elements.push({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: displayNameFromPathSegment(parts[i]),
+      item: itemUrl
+    });
+  }
+
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: elements
+  };
 }
 
 
@@ -50,6 +166,7 @@ export default withMermaid(defineConfig({
     ['meta', { name: 'baidu-site-verification', content: 'codeva-DyDGMBlEJg' }],
     ['meta', { name: 'keywords', content: 'Vibe Coding, 全栈开发, Next.js, TypeScript, React, Prisma, AI编程, Cursor, Claude' }],
     ['meta', { name: 'author', content: 'Eyre' }],
+    ['meta', { name: 'robots', content: 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1' }],
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['meta', { name: 'mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -59,6 +176,7 @@ export default withMermaid(defineConfig({
     ['link', { rel: 'icon', href: '/logo.png', type: 'image/png' }],
     ['link', { rel: 'shortcut icon', href: '/logo.png', type: 'image/png' }],
     ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: SITE_TITLE, href: '/rss.xml' }],
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
     [
       'script',
@@ -83,7 +201,37 @@ export default withMermaid(defineConfig({
 
     const title = frontmatterTitle || pageData.title || SITE_TITLE;
     const description = frontmatterDescription || pageData.description || SITE_DESCRIPTION;
-    const image = `${SITE_URL}/logo.png`;
+    const frontmatterImage = typeof frontmatter?.image === 'string' ? frontmatter.image : undefined;
+    const image = frontmatterImage
+      ? (/^https?:\/\//i.test(frontmatterImage) ? frontmatterImage : `${SITE_URL}${frontmatterImage.startsWith('/') ? '' : '/'}${frontmatterImage}`)
+      : `${SITE_URL}/logo.png`;
+
+    const urlPath = urlPathForPage(pageData.relativePath);
+    const breadcrumbList = buildBreadcrumbList(urlPath, url);
+    const jsonLdGraph: Array<Record<string, unknown>> = [
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        inLanguage: 'zh-CN'
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: title,
+        description,
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        inLanguage: 'zh-CN'
+      }
+    ];
+    if (breadcrumbList) jsonLdGraph.push(breadcrumbList);
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': jsonLdGraph
+    };
 
     return [
       ['link', { rel: 'canonical', href: url }],
@@ -97,13 +245,120 @@ export default withMermaid(defineConfig({
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
       ['meta', { name: 'twitter:image', content: image }],
+      ['script', { type: 'application/ld+json' }, safeJsonLd(jsonLd)],
     ];
+  },
+
+  transformPageData: async (pageData, ctx) => {
+    const frontmatter = pageData.frontmatter as Record<string, unknown> | undefined;
+    const frontmatterDescription = typeof frontmatter?.description === 'string' ? frontmatter.description : undefined;
+    if (frontmatterDescription) return;
+    if (pageData.description) return;
+
+    const relativePath = pageData.relativePath;
+    const fullPath = joinPath(ctx.siteConfig.srcDir, relativePath);
+
+    try {
+      const source = await readFile(fullPath, 'utf-8');
+      const description = extractDescriptionFromMarkdown(source);
+      if (!description) return;
+      return { description };
+    } catch {
+      return;
+    }
   },
 
   buildEnd: async (siteConfig) => {
     const sitemapLine = SITE_URL ? `\nSitemap: ${SITE_URL}/sitemap.xml\n` : '\n';
     const content = `User-agent: *\nAllow: /${sitemapLine}`;
     await writeFile(joinPath(siteConfig.outDir, 'robots.txt'), content, 'utf-8');
+
+    const pages = siteConfig.pages
+      .map((page) => (isAbsolutePath(page) ? relativePath(siteConfig.srcDir, page) : page))
+      .map((page) => page.replace(/\\/g, '/'))
+      .filter((page) => page.endsWith('.md'))
+      .filter((page) => page !== '404.md');
+
+    type RssItem = {
+      title: string;
+      link: string;
+      description: string;
+      pubDate: Date;
+    };
+
+    const items: RssItem[] = [];
+    for (const page of pages) {
+      const filePath = joinPath(siteConfig.srcDir, page);
+      try {
+        const source = await readFile(filePath, 'utf-8');
+        const frontmatter = parseSimpleFrontmatter(source);
+        const contentSource = stripFrontmatter(source);
+
+        const title =
+          frontmatter.title ||
+          (contentSource.match(/^#\s+(.+)\s*$/m)?.[1]?.trim() || '') ||
+          page.replace(/\/index\.md$/i, '').replace(/\.md$/i, '');
+
+        const description =
+          frontmatter.description ||
+          extractDescriptionFromMarkdown(source) ||
+          SITE_DESCRIPTION;
+
+        const link = `${SITE_URL}${urlPathForPage(page)}`;
+
+        const fileStats = await stat(filePath);
+        const pubDateCandidate = frontmatter.date ? new Date(frontmatter.date) : undefined;
+        const pubDate = pubDateCandidate && !Number.isNaN(pubDateCandidate.getTime()) ? pubDateCandidate : fileStats.mtime;
+
+        items.push({ title, link, description, pubDate });
+      } catch {
+        continue;
+      }
+    }
+
+    items.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+
+    const lastBuildDate = items[0]?.pubDate ?? new Date();
+    const rssItemsXml = items
+      .slice(0, 200)
+      .map((item) => {
+        const title = escapeXml(item.title);
+        const link = escapeXml(item.link);
+        const pubDate = escapeXml(item.pubDate.toUTCString());
+        const description = safeCdata(item.description);
+        return [
+          '<item>',
+          `<title>${title}</title>`,
+          `<link>${link}</link>`,
+          `<guid isPermaLink="true">${link}</guid>`,
+          `<pubDate>${pubDate}</pubDate>`,
+          `<description><![CDATA[${description}]]></description>`,
+          '</item>'
+        ].join('');
+      })
+      .join('');
+
+    const channelTitle = escapeXml(SITE_TITLE);
+    const channelLink = escapeXml(SITE_URL);
+    const channelDescription = safeCdata(SITE_DESCRIPTION);
+    const channelLanguage = 'zh-CN';
+    const channelLastBuildDate = escapeXml(lastBuildDate.toUTCString());
+
+    const rssXml = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<rss version="2.0">',
+      '<channel>',
+      `<title>${channelTitle}</title>`,
+      `<link>${channelLink}</link>`,
+      `<description><![CDATA[${channelDescription}]]></description>`,
+      `<language>${channelLanguage}</language>`,
+      `<lastBuildDate>${channelLastBuildDate}</lastBuildDate>`,
+      rssItemsXml,
+      '</channel>',
+      '</rss>'
+    ].join('');
+
+    await writeFile(joinPath(siteConfig.outDir, 'rss.xml'), rssXml, 'utf-8');
   },
 
   // 1. Markdown 增强配置
