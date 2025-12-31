@@ -267,6 +267,6 @@ graph TB
 
 ## 相关内容
 
-- 详见：[1.1 代码格式演变](./01-代码格式演变.md)
-- 详见：[1.3 浏览器与服务器基础](./03-浏览器与服务器基础.md)
-- 后续：[1.5 Node.js 环境与包管理](./05-Node.js环境与包管理.md)
+- 详见：[1.1 代码格式演变](./01-code-evolution.md)
+- 详见：[1.3 浏览器与服务器基础](./03-browser-server-basics.md)
+- 后续：[1.5 Node.js 环境与包管理](./05-nodejs-package-manager.md)

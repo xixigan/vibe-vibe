@@ -260,7 +260,7 @@ graph TB
 
 ## 相关内容
 
-- 详见：[第2章 AI调教指南](../02-ai-tuning-guide/index.md)
-- 详见：[2.2 VibeCoding工作流详解](../02-ai-tuning-guide/02-VibeCoding工作流详解.md)
-- 前置：[1.4 Terminal终端入门](./04-Terminal终端入门.md)
-- 前置：[1.5 Node.js环境与包管理](./05-Node.js环境与包管理.md)
+- 详见：[第2章 AI使用说明书](../02-ai-tuning-guide/index.md)
+- 详见：[2.2 VibeCoding工作流](../02-ai-tuning-guide/02-vibecoding-workflow.md)
+- 前置：[1.4 Terminal终端入门](./04-terminal-basics.md)
+- 前置：[1.5 Node.js环境与包管理](./05-nodejs-package-manager.md)

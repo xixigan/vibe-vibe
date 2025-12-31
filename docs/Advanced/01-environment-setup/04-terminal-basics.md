@@ -384,4 +384,4 @@ source ~/.zshrc
 
 ## 相关内容
 
-- 详见：[1.5 Node.js环境与包管理](./05-Node.js环境与包管理.md)
+- 详见：[1.5 Node.js环境与包管理](./05-nodejs-package-manager.md)

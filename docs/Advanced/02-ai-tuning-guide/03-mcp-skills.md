@@ -1199,8 +1199,8 @@ graph TB
 
 ## 相关内容
 
-- 前置：[2.2 VibeCoding 工作流](./02-workflow.md)
-- 详见：[2.4 项目规则配置](./04-项目配置完全指南.md)
+- 前置：[2.2 VibeCoding 工作流](./02-vibecoding-workflow.md)
+- 详见：[2.4 项目规则配置](./04-project-rules.md)
 - 扩展：[MCP 官方仓库](https://github.com/modelcontextprotocol/servers)
 - 扩展：[插件官方文档](https://code.claude.com/docs/plugins)
 - 扩展：[Agent Skills 官方文档](https://code.claude.com/docs/skills)

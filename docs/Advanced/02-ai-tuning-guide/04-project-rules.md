@@ -314,7 +314,7 @@ settings.json 是 Claude Code 的系统配置文件，控制权限模式、环�
 
 ::: details Hooks 配置
 
-Hooks 在特定事件时自动执行脚本，详见 [2.2 VibeCoding 工作流 - Hooks 自动化](./02-VibeCoding工作流.md#hooks-自动化)。
+Hooks 在特定事件时自动执行脚本，详见 [2.2 VibeCoding 工作流 - Hooks 自动化](./02-vibecoding-workflow.md#hooks-自动化)。
 
 **基本结构**：
 
@@ -586,8 +586,8 @@ git pull
 
 ## 相关内容
 
-- 前置：[2.2 VibeCoding工作流详解](./02-VibeCoding工作流.md)
-- 详见：[2.3 MCP、插件与 Skills](./03-MCP插件与Skills.md)
+- 前置：[2.2 VibeCoding工作流](./02-vibecoding-workflow.md)
+- 详见：[2.3 MCP、插件与 Skills](./03-mcp-skills.md)
 - 详见：[10.10 Skills 团队知识共享](../10-git-collaboration/10-Skills团队知识共享.md)
 - 详见：[10.11 Agent Skills 团队协作](../10-git-collaboration/11-Agent-Skills团队协作.md)
-- 后续：[第三章 项目文档体系](../03-project-docs/index.md)
+- 后续：[第三章 PRD与文档驱动](../03-prd-doc-driven/index.md)

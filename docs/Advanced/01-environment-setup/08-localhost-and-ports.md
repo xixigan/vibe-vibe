@@ -303,7 +303,7 @@ sequenceDiagram
 
 ## 相关内容
 
-- 详见：[1.4 Terminal终端入门](./04-Terminal终端入门.md)
+- 详见：[1.4 Terminal终端入门](./04-terminal-basics.md)
 - 详见：[第9章 Localhost与公网访问](../../09-localhost-public-access/index.md)
-- 前置：[1.3 浏览器与服务器基础](./03-浏览器与服务器基础.md)
-- 前置：[1.7 创建项目](./07-创建项目.md)
+- 前置：[1.3 浏览器与服务器基础](./03-browser-server-basics.md)
+- 前置：[1.7 创建项目](./07-creating-projects.md)

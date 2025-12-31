@@ -278,8 +278,8 @@ pnpm dev
 
 ## 相关内容
 
-- 详见：[1.1 代码格式演变](./01-代码格式演变.md)
-- 详见：[1.8 Localhost与端口](./08-Localhost与端口.md)
+- 详见：[1.1 代码格式演变](./01-code-evolution.md)
+- 详见：[1.8 Localhost与端口](./08-localhost-and-ports.md)
 - 详见：[第6章 环境变量与安全机制](../../06-env-vars-security/index.md)
-- 前置：[1.2 技术栈概念](./02-技术栈概念.md)
-- 后续：[1.5 Node.js环境与包管理](./05-Node.js环境与包管理.md)
+- 前置：[1.2 技术栈概念](./02-tech-stack.md)
+- 后续：[1.5 Node.js环境与包管理](./05-nodejs-package-manager.md)

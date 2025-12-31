@@ -305,6 +305,6 @@ graph LR
 
 ## 相关内容
 
-- 详见：[1.4 Terminal终端入门](./04-Terminal终端入门.md)
+- 详见：[1.4 Terminal终端入门](./04-terminal-basics.md)
 - 详见：[nvm 中文官网](https://nvm.uihtm.com/)
-- 前置：[1.2 技术栈概念](./02-技术栈概念.md)
+- 前置：[1.2 技术栈概念](./02-tech-stack.md)

@@ -302,4 +302,4 @@ git commit 保存现场
 
 ## 相关内容
 
-- 前置：[2.2 VibeCoding工作流详解](./02-workflow.md)
+- 前置：[2.2 VibeCoding工作流](./02-vibecoding-workflow.md)

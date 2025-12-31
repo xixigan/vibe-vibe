@@ -466,7 +466,6 @@ graph TB
 
 ## 相关内容
 
-- 详见：[1.5 Node.js环境与包管理](./05-Node.js环境与包管理.md)
-- 详见：[1.8 Localhost与端口](./08-Localhost与端口.md)
-- 前置：[1.9 命令排查思维](./09-命令排查思维.md)
-- 后续：[第2章 AI调教指南](../02-ai-tuning-guide/index.md)
+- 详见：[1.5 Node.js环境与包管理](./05-nodejs-package-manager.md)
+- 详见：[1.8 Localhost与端口](./08-localhost-and-ports.md)
+- 后续：[第2章 AI使用说明书](../02-ai-tuning-guide/index.md)
