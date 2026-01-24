@@ -479,7 +479,7 @@ export default withMermaid(defineConfigWithTheme<ThemeConfigWithBroadcast>({
       {
         text: '进阶篇',
         items: [
-          { text: '从想法到产品的100小时', link: '/Advanced/' },
+          { text: '序-从想法到产品的100小时', link: '/Advanced/' },
           { text: '01-环境搭建与代码运行基础', link: '/Advanced/01-environment-setup/' },
           { text: '02-AI使用说明书', link: '/Advanced/02-ai-tuning-guide/' },
           { text: '03-PRD与文档驱动', link: '/Advanced/03-prd-doc-driven/' },
