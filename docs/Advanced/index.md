@@ -315,18 +315,19 @@ Eyre
 | 1 | [环境搭建、代码形态与包管理器](/Advanced/01-environment-setup/) | ✅ 序言可阅读 |
 | 2 | [AI 调教指南](/Advanced/02-ai-tuning-guide/) | ✅ 序言可阅读 |
 | 3 | [PRD 与文档驱动开发](/Advanced/03-prd-doc-driven/) | ✅ 序言可阅读 |
-| 4 | [代码运行状态与构建原理](/Advanced/04-build-and-runtime-modes/) | ✅ 序言可阅读 |
-| 5 | [界面（UI）与交互（UX）](/Advanced/05-ui-ux/) | ✅ 序言可阅读 |
-| 6 | [环境变量与安全机制](/Advanced/06-env-vars-security/) | ✅ 序言可阅读 |
-| 7 | [数据持久化与数据库](/Advanced/07-data-persistence-database/) | ✅ 序言可阅读 |
-| 8 | [功能测试流程与自动化脚本](/Advanced/08-testing-automation/) | ✅ 序言可阅读 |
-| 9 | [Localhost 与公网访问](/Advanced/09-localhost-public-access/) | ✅ 序言可阅读 |
-| 10 | [Git 版本控制与跨平台协作](/Advanced/10-git-collaboration/) | ✅ 序言可阅读 |
-| 11 | [无服务器部署与 CI/CD 自动化](/Advanced/11-serverless-deploy-cicd/) | ✅ 序言可阅读 |
-| 12 | [域名解析原理与网络接入](/Advanced/12-domain-dns/) | ✅ 序言可阅读 |
-| 13 | [云服务器运维与项目部署](/Advanced/13-vps-ops-deploy/) | ✅ 序言可阅读 |
-| 14 | [SEO、分享与数据统计](/Advanced/14-seo-analytics/) | ✅ 序言可阅读 |
-| 15 | [用户反馈与产品迭代](/Advanced/15-user-feedback-iteration/) | ✅ 序言可阅读 |
+| 4 | [开发常识与技术栈](/Advanced/04-dev-fundamentals/) | ✅ 序言可阅读 |
+| 5 | [代码运行的三种状态与构建原理](/Advanced/05-build-and-runtime-modes/) | ✅ 序言可阅读 |
+| 6 | [界面（UI）与交互（UX）](/Advanced/06-ui-ux/) | ✅ 序言可阅读 |
+| 7 | [环境变量与安全机制](/Advanced/07-env-vars-security/) | ✅ 序言可阅读 |
+| 8 | [数据持久化与数据库](/Advanced/08-data-persistence-database/) | ✅ 序言可阅读 |
+| 9 | [功能测试流程与自动化脚本](/Advanced/09-testing-automation/) | ✅ 序言可阅读 |
+| 10 | [Localhost 与公网访问](/Advanced/10-localhost-public-access/) | ✅ 序言可阅读 |
+| 11 | [Git 版本控制与跨平台协作](/Advanced/11-git-collaboration/) | ✅ 序言可阅读 |
+| 12 | [无服务器部署与 CI/CD 自动化](/Advanced/12-serverless-deploy-cicd/) | ✅ 序言可阅读 |
+| 13 | [域名解析原理与网络接入](/Advanced/13-domain-dns/) | ✅ 序言可阅读 |
+| 14 | [云服务器运维与项目部署](/Advanced/14-vps-ops-deploy/) | ✅ 序言可阅读 |
+| 15 | [SEO、分享与数据统计](/Advanced/15-seo-analytics/) | ✅ 序言可阅读 |
+| 16 | [用户反馈与产品迭代](/Advanced/16-user-feedback-iteration/) | ✅ 序言可阅读 |
 
 ---
 
