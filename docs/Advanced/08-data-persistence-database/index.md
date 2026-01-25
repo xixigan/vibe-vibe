@@ -102,11 +102,13 @@ export const posts = pgTable('posts', {
 
 为了实战，你接触到了 **SQLite**，它是一个轻量级的文件数据库，不需要安装，非常适合开发测试。但为了未来的扩展性，老师傅建议你使用 **PostgreSQL**。
 
-**PostgreSQL 的两种主流托管方式**：Supabase 和 Neon 都是托管 PostgreSQL 的云服务，但定位不同。
+**PostgreSQL 的托管方式**主要有三种：
 
 **Supabase** 是一个完整的 BaaS（Backend as a Service），除了 PostgreSQL 数据库，还提供 Auth 认证、Storage 存储、Realtime 实时订阅、Edge Functions 等功能。如果你想快速验证 MVP，不想操心后端细节，Supabase 是很好的选择。
 
 **Neon** 则专注于数据库本身，提供无服务器架构的 PostgreSQL，可以按需自动扩缩容，适合对后端有自定义需求的场景。
+
+**传统云服务商**如阿里云、腾讯云、AWS 等，也都提供 PostgreSQL 托管服务（RDS）。它们是老牌的云基础设施厂商，提供更全面的云产品线（服务器、存储、CDN、数据库等），适合企业级项目或需要多种云服务组合的场景。如果你已经在用某家云的服务器，直接用同厂商的数据库托管通常网络更快、配置更简单。
 
 但老师傅提醒你，本教程推荐使用标准的 PostgreSQL，而不是被任何 BaaS 捆绑。标准 PostgreSQL 让你更深入理解数据库的核心概念，迁移成本更低，未来可以根据需求选择任意托管平台或自建。Supabase、Neon、Railway 等都只是 PostgreSQL 的不同托管方式，你掌握的是数据库本身，而不是某个特定的服务平台。这种"不被捆绑"的思路，在 AI 时代尤为重要。
 
