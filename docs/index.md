@@ -29,7 +29,7 @@ features:
   - title: MVP 思维
     details: 掌握"最小可行产品"理念，用最少的时间验证你的想法，避免功能蔓延的陷阱
   - title: 现代技术栈
-    details: 进阶篇基于 Next.js + TypeScript + Prisma，学习企业级全栈开发最佳实践
+    details: 进阶篇基于 Next.js + TypeScript + Drizzle，学习企业级全栈开发最佳实践
   - title: 安全意识
     details: 从第一天就建立安全底线意识，学会保护用户数据和避免常见安全漏洞
   - title: 渐进式学习
@@ -145,13 +145,13 @@ features:
 
 **学习目标**：全栈技术栈 · 前后端架构 · 生产级部署 · 工程化思维
 
-**内容预览**（16章序言可阅读）：
+**内容预览**（已完成2/16，其余章节可阅读序言）：
 - **开发基础**：环境搭建 · 开发工具 · AI 调教 · 文档驱动
 - **界面与数据**：UI/UX · 环境变量 · 数据库 · 测试自动化
 - **部署运维**：公网访问 · Git 协作 · CI/CD · 域名 DNS · VPS 部署
 - **安全增长**：SEO · 数据统计 · 用户反馈与产品迭代
 
-**技术栈**：Next.js 16 · React · TypeScript · Tailwind · shadcn/ui · Prisma · PostgreSQL
+**技术栈**：Next.js 16 · React · TypeScript · Tailwind · shadcn/ui · Drizzle · PostgreSQL
 
 </div>
 
