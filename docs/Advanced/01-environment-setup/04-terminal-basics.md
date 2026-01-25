@@ -57,7 +57,7 @@ graph TB
 - 或在 Finder → 应用程序 → 实用工具 → 终端
 
 **Windows**：
-- 按 `Win + R`，输入 `cmd` 或 `powershell`
+- 按 `Win + R`，输入 `powershell`（推荐）或 `Windows Terminal`
 - 或右键文件夹 → "在终端中打开"
 
 **VS Code 内置终端**：
@@ -66,66 +66,50 @@ graph TB
 
 ### 基本文件操作
 
-这些命令在 Mac、Linux、Windows 上都是通用的：
+这些命令在 Mac、Linux、Windows 的 PowerShell/CMD 上都是通用的：
 
 ```bash
 # 查看当前目录
 pwd
 
 # 列出文件
-ls
+ls          # Mac/Linux PowerShell
+dir         # Windows CMD
 
 # 切换目录
 cd folder-name
 cd ..         # 返回上一级
-cd ~          # 返回用户主目录（Mac/Linux）
+cd ~          # 返回用户主目录（Mac/Linux PowerShell）
 
 # 创建目录
 mkdir folder-name
 ```
 
-### 常用开发命令
+### 复制粘贴操作
 
-```bash
-# 运行开发服务器
-pnpm dev
-npm run dev
+**Windows PowerShell**：
+- **粘贴**：右键单击窗口（直接粘贴，Ctrl+V 可能不生效）
+- **复制**：选中文字后右键，或使用快捷键
 
-# 安装依赖
-pnpm install
-npm install
-
-# 构建项目
-pnpm build
-npm run build
-
-# 查看版本
-node -v
-pnpm -v
-nvm version
-```
+**Mac Terminal**：
+- **复制**：`Command + C`
+- **粘贴**：`Command + V`
+- **从其他地方粘贴**：`Command + Shift + V`（有时需要）
 
 ### 停止运行中的程序
 
-当你在终端运行 `pnpm dev` 或其他命令时，程序会持续运行直到你主动停止。
+当你在终端运行命令时，如果程序持续运行或卡住：
 
-**停止当前程序**：
-- 按 `Ctrl + C` 即可停止
+**停止当前程序**：按 `Ctrl + C`
 
 ::: tip 什么时候需要停止程序？
-
-以下情况需要手动停止运行的程序：
 
 - **完成测试**：开发服务器不需要一直开着
 - **释放端口**：同一端口不能被多个程序占用
 - **程序卡死**：命令没有响应，需要强制终止
 - **关闭电脑**：下班前停止所有后台服务
 
-停止后可以随时重新运行 `pnpm dev` 启动。
-
 :::
-
-这是开发者最常用的操作之一——启动开发服务器 → 测试 → 停止服务器。
 
 ### 环境变量与 PATH
 
@@ -135,33 +119,7 @@ nvm version
 
 :::
 
-当你输入 `node`、`pnpm`、`claude` 这样的命令时，系统是如何找到它们的？
-
-```mermaid
-sequenceDiagram
-    participant 用户 as 用户输入命令
-    participant Shell as Shell 解释器
-    participant PATH as PATH 环境变量
-    participant 程序 as 可执行程序
-
-    用户->>Shell: 输入 "pnpm"
-    Shell->>PATH: 查找 PATH 中的目录
-    PATH-->>Shell: 返回目录列表
-    Shell->>程序: 找到 pnpm 可执行文件
-    程序-->>用户: 命令执行
-```
-
-::: tip 输入 pnpm 时发生了什么？
-
-你输入 `pnpm` 后，Shell 在 PATH 中查找可执行文件并启动。如果提示 `command not found`，说明 pnpm 没有安装或 npm 全局目录不在 PATH 中。
-
-```bash
-# 检查方法
-npm prefix -g    # 查看 npm 全局安装路径
-echo $PATH        # 确认该路径在 PATH 中
-```
-
-:::
+当你输入 `node`、`pnpm` 这样的命令时，系统是如何找到它们的？
 
 **PATH 的工作原理**：
 
@@ -170,68 +128,24 @@ echo $PATH        # 确认该路径在 PATH 中
 3. 找到后执行该文件
 4. 如果所有目录都找不到，显示 `command not found`
 
-### 将程序添加到 PATH
+::: tip 命令找不到怎么办？
 
-当你安装了新软件（如 Git）后，如果输入命令提示"不存在"，需要将其路径添加到 PATH。
+如果输入命令提示 `command not found`，说明工具没有安装或没有在 PATH 中。
 
-::: tip 什么时候需要配置 PATH？
-
-出现以下情况时，说明需要配置 PATH：
-
-- **新安装的工具**：输入命令提示 `command not found`
-- **全局安装失败**：`npm install -g` 后命令无法使用
-- **切换 Shell 后**：从 bash 切换到 zsh 后旧命令失效
-
-配置一次后永久生效，不需要每次都设置。
+按照下一节（1.5 Node.js 环境与包管理）完成安装后，命令就能正常使用了。
 
 :::
 
-**Mac / Linux**：
-
-编辑 shell 配置文件。不同 Shell 使用不同的配置文件：
-
-| Shell | 配置文件 | 说明 |
-|-------|----------|------|
-| **zsh** | `~/.zshrc` | Mac 默认 Shell |
-| **bash** | `~/.bashrc` | Linux 常用 Shell |
-
-**如何查看当前 Shell**：
-
-```bash
-echo $SHELL
-# 输出 /bin/zsh 表示使用 zsh
-# 输出 /bin/bash 表示使用 bash
-```
-
-**添加到 PATH**（以 zsh 为例）：
-
-```bash
-# 1. 编辑配置文件
-nano ~/.zshrc
-
-# 2. 在文件末尾添加（将 /path/to/bin 替换为实际路径）
-export PATH="/path/to/bin:$PATH"
-
-# 3. 保存后重新加载配置
-source ~/.zshrc
-```
-
-**Windows**：
-
-1. 右键"此电脑" → 属性 → 高级系统设置 → 环境变量
-2. 在"用户变量"中找到 `Path`，点击编辑
-3. 点击"新建"，添加程序路径
-4. 确定并重启终端
-
 ### 终端快捷键
 
-| 快捷键 | Mac/Linux | Windows | 作用 |
-|--------|-----------|---------|------|
-| 中断 | `Ctrl + C` | `Ctrl + C` | 停止当前命令 |
-| 清屏 | `Cmd + K` | `Ctrl + L` | 清空屏幕 |
-| 历史 | `↑ / ↓` | `↑ / ↓` | 浏览历史命令 |
-| 光标 | `Ctrl + A` | `Home` | 跳到行首 |
-| 光标 | `Ctrl + E` | `End` | 跳到行尾 |
+| 快捷键 | 作用 |
+|--------|------|
+| `Ctrl + C` | 停止当前运行的程序 |
+| `Ctrl + L` | 清屏（相当于输入 `clear`） |
+| `↑ / ↓` | 浏览历史命令 |
+| `Tab` | 自动补全文件名或命令 |
+| `Ctrl + A` | 光标移到行首 |
+| `Ctrl + E` | 光标移到行尾 |
 
 ## 常见问题
 
@@ -246,17 +160,14 @@ $ ls -l    # 不要输入 $ 符号
 
 ### Q2: 如何在 VS Code 中打开当前文件夹的终端？
 
-**A**: 点击菜单。
-
-终端 → 新建终端
+**A**: 点击菜单：终端 → 新建终端
 
 ### Q3: 终端显示中文乱码怎么办？
 
 **A**: 修改终端编码设置。
 
-Mac：Terminal → 偏好设置 → 描述文件 → 高级 → 字符编码 → UTF-8
-
-Windows：PowerShell 属性 → 字体 → 选择支持中文的字体
+- **Mac**：Terminal → 偏好设置 → 描述文件 → 高级 → 字符编码 → UTF-8
+- **Windows**：PowerShell 属性 → 字体 → 选择支持中文的字体
 
 ### Q4: 如何同时运行多个命令？
 
@@ -265,31 +176,7 @@ Windows：PowerShell 属性 → 字体 → 选择支持中文的字体
 ```bash
 # 清理并重新安装
 rm -rf node_modules && pnpm install
-
-# 或并行执行（Mac/Linux）
-pnpm dev & pnpm test
 ```
-
-### Q5: 命令太长怎么换行？
-
-**A**: 使用反斜杠续行。
-
-```bash
-npm install \
-  package-one \
-  package-two \
-  package-three
-```
-
-### Q6: 修改环境变量后为什么终端不生效？
-
-**A**: 需要重启终端。
-
-终端在启动时会读取环境变量，之后修改系统环境变量，已打开的终端不会自动更新。
-
-**解决方法**：
-- 关闭当前终端，重新打开
-- 或在编辑器（如 VS Code）中关闭终端面板后重新打开
 
 ## 核心理念
 

@@ -56,6 +56,14 @@ pnpm 是 Node.js 的包管理器，用于安装项目依赖（第三方代码包
 
 下载后解压，运行 `.exe` 安装程序。安装完成后**打开新的 PowerShell 窗口**，执行：
 
+::: tip 如何复制粘贴命令？
+
+1. 鼠标移到代码块**右上角**，点击**复制按钮**
+2. 在 PowerShell 窗口**右键单击**（直接粘贴，Ctrl+V 可能不生效）
+3. 按回车执行
+
+:::
+
 ```powershell
 nvm install lts; nvm use lts; npm config set registry https://registry.npmmirror.com/; npm install -g pnpm; pnpm setup; pnpm config set registry https://registry.npmmirror.com/; node -v; pnpm -v
 ```
