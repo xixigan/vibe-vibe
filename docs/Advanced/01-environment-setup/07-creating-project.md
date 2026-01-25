@@ -178,7 +178,7 @@ my-next-app/
 
 它会引导你完成环境检查、需求分析、模板选择、依赖安装、环境变量配置等全部流程。
 
-教程正式发布后，会提供安装方法。想了解更多 Skills 内容，详见 [2.3 Skills 系统](../02-ai-tuning-guide/03-mcp-and-skills/)。
+教程正式发布后，会提供安装方法。想了解更多 Skills 内容，详见 [2.3 Skills 系统](../02-ai-tuning-guide/03-mcp-and-skills.md)。
 
 :::
 
