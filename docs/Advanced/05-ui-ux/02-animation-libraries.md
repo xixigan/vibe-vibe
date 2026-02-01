@@ -1,9 +1,9 @@
 ---
-title: "6.2 动画与交互库"
+title: "5.2 动画与交互库"
 description: "Framer Motion、GSAP、Three.js...让页面'动'起来的选项"
 ---
 
-# 6.2 动画与交互库
+# 5.2 动画与交互库
 
 > **待开发**
 

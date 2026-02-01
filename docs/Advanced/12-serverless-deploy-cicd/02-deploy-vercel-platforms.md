@@ -1,8 +1,8 @@
 ---
-title: "部署到类 Vercel 平台"
+title: "12.2 部署到类 Vercel 平台"
 ---
 
-# 部署到类 Vercel 平台
+# 12.2 部署到类 Vercel 平台
 
 > **待开发**
 

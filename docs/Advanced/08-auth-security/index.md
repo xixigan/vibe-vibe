@@ -167,19 +167,19 @@ AI 会帮你：
 > 接下来的几个小节，**不是让你重新学一遍安全概念**，而是一份**检查清单和排查手册**。遇到问题时回来查，平时按清单检查就行。
 
 ```
-- 7.1 安全开发流程 (./01-security-workflow.md) 🟡
+- 8.1 安全开发流程 (./01-security-workflow.md) 🟡
     开发前/中/后/上线后各阶段该做什么？预防性清单
 
-- 7.2 安全问题诊断手册 (./02-security-diagnosis.md) 🟡
+- 8.2 安全问题诊断手册 (./02-security-diagnosis.md) 🟡
     遇到报错怎么排查？症状→原因→解决方案
 
-- 7.3 认证方式与方案选择 (./03-auth-methods.md) 🟡
+- 8.3 认证方式与方案选择 (./03-auth-methods.md) 🟡
     现代认证方式速查（OAuth 2.0、Passkeys、Magic Link）、认证产品对比（Better Auth、NextAuth、Logto、Clerk）、SSH/GPG 公私钥认证、让 AI 配置认证系统
 
-- 7.4 权限与路由保护 (./04-auth-routes.md) 🟡
+- 8.4 权限与路由保护 (./04-auth-routes.md) 🟡
     Middleware 路由保护、角色权限控制、页面级/接口级权限
 
-- 7.5 进阶安全防护 (./05-advanced-security.md) 🟡
+- 8.5 进阶安全防护 (./05-advanced-security.md) 🟡
     CSRF/XSS/SQL注入防护、AI应用安全、速率限制、敏感数据加密
 ```
 ---

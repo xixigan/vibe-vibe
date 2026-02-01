@@ -105,21 +105,51 @@ title: "第五章：界面(UI)与交互(UX)"
 
 ---
 
+### Skills 资源
+
+在 AI 时代，Claude Code 有一个强大的功能叫做 **Skills（技能包）**。你可以把 Skills 理解为 AI 的"专业技能扩展包"——给 AI 装上特定领域的知识库，让它成为那个领域的专家。
+
+UI 开发相关的 Skills 能让 AI 更懂设计、更懂前端规范。比如装上 `frontend-design` Skill 后，AI 会生成更符合现代设计标准的代码；装上 `web-design-guidelines` Skill 后，AI 会主动检查无障碍访问等设计规范。
+
+**Skills 官网**：https://skills.sh —— 浏览和发现所有可用的 Skills
+
+**项目 Skills 资源**：本项目仓库的 [`.claude/skills/`](https://cnb.cool/nfeyre/default-dev-env/-/tree/main/.claude/skills) 目录整理了官方推荐 Skills。
+
+**常用的 UI 相关 Skills**：
+
+| Skill 名称 | 用途 | 安装命令 |
+|-----------|------|---------|
+| `frontend-design` | 高质量前端界面设计 | `npx skills add anthropics/skills/frontend-design` |
+| `web-design-guidelines` | Web 界面设计规范审查 | `npx skills add vercel-labs/agent-skills/web-design-guidelines` |
+| `webapp-testing` | 使用 Playwright 测试网页 | `npx skills add anthropics/skills/webapp-testing` |
+| `web-artifacts-builder` | 创建复杂的 React/Tailwind UI | `npx skills add anthropics/skills/web-artifacts-builder` |
+
+**如何使用 Skills**：
+
+告诉 AI "使用 frontend-design Skill 来创建这个组件"，或者 "让 web-design-guidelines Skill 帮我审查这个页面"。
+
+你不需要自己写代码细节，只需要描述需求，AI 会调用对应的 Skill 来完成任务。这就是 VibeCoding 的核心：**你负责方向，AI 负责实现**。
+
+---
+
 ## 小节导航
 
 > 接下来的几个小节，**不是让你从头学一遍前端**，而是给你一份**工具箱和灵感库**。你不需要记住所有内容，只需要知道"原来还有这种东西"——当项目需要时，回来查就行。
 
 ```
-- 6.1 前端设计 AI 工具箱 (./01-ai-design-tools.md) 🟡
+- 5.0 Skills 资源 (./00-skills-resources.md) 🟢
+    UI 开发相关的 Skills 资源介绍，以及如何让 AI 更懂设计规范
+
+- 5.1 前端设计 AI 工具箱 (./01-ai-design-tools.md) 🟡
     除了 Claude Code，还有哪些专门做 UI 的 AI 工具？什么时候用哪个？
 
-- 6.2 动画与交互库 (./02-animation-libraries.md) 🟡
+- 5.2 动画与交互库 (./02-animation-libraries.md) 🟡
     Framer Motion、GSAP、Three.js...让页面"动"起来的选项
 
-- 6.3 UI 风格与灵感 (./03-ui-inspiration.md) 🟡
+- 5.3 UI 风格与灵感 (./03-ui-inspiration.md) 🟡
     Awwwards、Dribbble、Mobgin...去哪里找参考？如何向 AI 描述一种风格？
 
-- 6.4 让页面更高级的效果 (./04-advanced-effects.md) 🟡
+- 5.4 让页面更高级的效果 (./04-advanced-effects.md) 🟡
     视差滚动、3D 翻转、骨架屏...那些让页面显得"高级"的效果，以及对应的提示词
 ```
 ---

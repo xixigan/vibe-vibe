@@ -1,8 +1,8 @@
 ---
-title: "部署 Next.js 应用"
+title: "14.3.2 部署 Next.js 应用"
 ---
 
-# 部署 Next.js 应用
+# 14.3.2 部署 Next.js 应用
 
 ## 本节内容开发中
 

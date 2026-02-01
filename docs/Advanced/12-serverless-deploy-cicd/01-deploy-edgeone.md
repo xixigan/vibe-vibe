@@ -1,8 +1,8 @@
 ---
-title: "部署到 EdgeOne Pages"
+title: "12.1 部署到 EdgeOne Pages"
 ---
 > **待开发**
-# 部署到 EdgeOne Pages
+# 12.1 部署到 EdgeOne Pages
 
 > **待开发**
 

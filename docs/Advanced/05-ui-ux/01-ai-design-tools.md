@@ -1,9 +1,9 @@
 ---
-title: "6.1 前端设计 AI 工具箱"
+title: "5.1 前端设计 AI 工具箱"
 description: "除了 Claude Code，还有哪些专门做 UI 的 AI 工具？"
 ---
 
-# 6.1 前端设计 AI 工具箱
+# 5.1 前端设计 AI 工具箱
 
 > **待开发**
 

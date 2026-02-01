@@ -1,9 +1,9 @@
 ---
-title: "8.3 如何操作数据库"
+title: "6.3 如何操作数据库"
 description: "认识 Drizzle、Prisma 等 ORM，理解 AI 生成的 CRUD 代码"
 ---
 
-# 8.3 如何操作数据库
+# 6.3 如何操作数据库
 
 > **待开发**
 
