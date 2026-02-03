@@ -1,0 +1,34 @@
+/* VIBE VIBE - HUMANS.TXT */
+
+# PROJECT
+Team: Vibe Vibe
+Location: GitHub (https://github.com/datawhalechina/vibe-vibe)
+Mission: Enable everyone to become a Builder through AI-powered programming
+Status: Alpha v0.0.4
+
+# CORE CONTRIBUTORS
+Fu Hangkang (https://www.hangkangfu.cn) - Project Lead & Core Contributor
+Qi Guohao (https://www.guohaoqi.cn) - Project Lead & Core Contributor
+Liu Lei - Practice Section Contributor
+Chen Junxi - Articles Section Contributor
+Jin Long - Practice Section Contributor
+Shu Lulu - Practice Section Contributor
+
+# ORGANIZATION
+Datawhale (https://github.com/datawhalechina)
+Mission: Make AI learning accessible to everyone
+
+# SITE
+Last updated: 2026-02-03
+Language: Chinese (Simplified)
+Tech stack: VitePress + Vue 3
+Hosting: EdgeOne Pages
+
+# CONTACT
+GitHub Issues: https://github.com/datawhalechina/vibe-vibe/issues
+License: CC BY-NC-SA 4.0
+
+# ACKNOWLEDGMENTS
+Inspired by Andrej Karpathy's "Vibe Coding" philosophy
+Built with VitePress (https://vitepress.dev)
+Powered by the open source community

@@ -1,0 +1,55 @@
+# VIBE VIBE - SECURITY POLICY
+
+Contact: mailto:contact@vibevibe.cn
+Preferred-Languages: zh, en
+Expires: 2027-02-03T23:59:00.000Z
+
+# Security Policy
+
+## Reporting Vulnerabilities
+
+If you discover a security vulnerability, please report it responsibly:
+
+1. **Email**: contact@vibevibe.cn
+2. **GitHub Security Advisory**: Use GitHub's private vulnerability reporting
+3. **Response Time**: We aim to respond within 48 hours
+
+## What to Include
+
+Please include:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Proof of concept (if applicable)
+
+## Safe Harbor
+
+We commit to:
+- Responding to your report promptly
+- Keeping you updated on our progress
+- Crediting you for the discovery (if desired)
+- Not pursuing legal action for responsible disclosure
+
+## Scope
+
+This security policy covers:
+- www.vibevibe.cn
+- Related subdomains
+- Official GitHub repositories
+
+## Encryption
+
+For sensitive reports, please use our PGP key:
+(PGP key coming soon)
+
+## Security Best Practices
+
+We follow security best practices including:
+- Environment variable management
+- Secure authentication (Advanced/08-auth-security/)
+- Data protection guidelines
+- Regular dependency updates
+
+For more details, see: /Advanced/08-auth-security/
+
+Thank you for helping keep Vibe Vibe safe!

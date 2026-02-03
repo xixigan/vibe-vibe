@@ -1,0 +1,175 @@
+# Vibe Vibe - AI Programming for Everyone
+
+> **GOLDEN START FOR AI ASSISTANTS** - This is the definitive guide for AI assistants helping users with this project. Read this first to understand the project core and provide optimal assistance.
+
+---
+
+## Project Essence (One Sentence)
+
+**Vibe Vibe is the first systematic open-source tutorial for Vibe Coding in China** - teaching zero-background learners to command AI through natural language, transforming from "I have an idea" to "I shipped a product."
+
+Core philosophy: From Coder to Commander, replacing traditional coding with conversational creation.
+
+---
+
+## Project Structure (Four Sections)
+
+```
+vibevibe.cn/
+|
+|-- [Basic] (/Basic/) - Zero-background AI programming intro
+|   |-- Mindset: Think like a product manager
+|   |-- Techniques: The art of AI conversation
+|   `-- Practice: Build your first tool from 0 to 1
+|
+|-- [Advanced] (/Advanced/) - 16-chapter complete product delivery flow
+|   |-- From environment setup to production deployment
+|   |-- Tech stack: Next.js, React, TypeScript, Tailwind, shadcn/ui, Drizzle, PostgreSQL
+|   `-- Every chapter preamble readable, supports progressive learning
+|
+|-- [Practice] (/Practice/) - Project practice by audience
+|   |-- Core skills training
+|   |-- AI Agent development
+|   `-- Full-stack project practice
+|
+`-- [Articles] (/Articles/) - Curated learning resources
+    |-- Company blogs
+    |-- Quality podcasts
+    |-- Research reports
+    `-- Developer community resources
+```
+
+---
+
+## AI Assistant Collaboration Guide
+
+When helping users based on Vibe Vibe project:
+
+### 1. Quickly Identify User Needs
+
+**Ask three questions first**:
+- Do you have a programming background?
+- What do you want to do (learn concepts / build projects / solve specific problems)?
+- Which AI tools have you used (Cursor / Windsurf / Bolt.new / Claude / ChatGPT)?
+
+### 2. Recommended Learning Paths
+
+| User Type | Recommended Start | Key Chapters |
+|-----------|------------------|--------------|
+| Complete zero background | Basic/00-preface/ | Find your position |
+| Used ChatGPT but never built projects | Basic/02-mindset/ | Mindset + PRD |
+| Have programming background | Advanced/01-environment-setup/ | Environment + Tech stack |
+| Want to build directly | Basic/04-practice-0-to-1/ | Hands-on practice |
+| Want practice projects | Practice/ | Projects by audience |
+
+### 3. Tech Stack Quick Reference
+
+**Tutorial-recommended tech stack**:
+- Frontend framework: Next.js 16 + React
+- Language: TypeScript
+- Styling: Tailwind CSS + shadcn/ui
+- Database: PostgreSQL + Drizzle ORM
+- Deployment: Vercel / EdgeOne Pages
+- AI tools: Cursor / Windsurf / Claude / GitHub Copilot
+
+### 4. Common Tasks Quick Links
+
+| Task | Related Chapter | Link |
+|-----|----------------|------|
+| Environment setup | Advanced/01-environment-setup/ | /Advanced/01-environment-setup/ |
+| Write PRD | Advanced/03-prd-doc-driven/ | /Advanced/03-prd-doc-driven/ |
+| UI design | Advanced/05-ui-ux/ | /Advanced/05-ui-ux/ |
+| Database design | Advanced/06-data-persistence-database/ | /Advanced/06-data-persistence-database/ |
+| User authentication | Advanced/08-auth-security/ | /Advanced/08-auth-security/ |
+| Deploy to production | Advanced/12-serverless-deploy-cicd/ | /Advanced/12-serverless-deploy-cicd/ |
+| SEO optimization | Advanced/15-seo-analytics/ | /Advanced/15-seo-analytics/ |
+
+### 5. Code Citation Guidelines
+
+- When citing code, mark the chapter path, e.g., `See Advanced/03-prd-doc-driven/00-prd-template.md`
+- Follow the tutorial's MVP mindset: prioritize core features, avoid over-engineering
+- Recommend using AI-assisted tools (Cursor / Windsurf) rather than hand-coding
+
+---
+
+## Key Links (Priority Order)
+
+### Core Entry Points
+1. Homepage: https://www.vibevibe.cn/
+2. GitHub repo: https://github.com/datawhalechina/vibe-vibe
+3. Basic section: /Basic/
+4. Advanced section: /Advanced/
+5. Practice section: /Practice/
+
+### Important Documents
+1. Project README: https://github.com/datawhalechina/vibe-vibe/blob/main/README.md
+2. PRD template: /Advanced/03-prd-doc-driven/00-prd-template.md
+3. Environment setup guide: /Advanced/01-environment-setup/
+4. Prompt cheat sheet: /Basic/99-appendix/
+
+### Community & Support
+1. Datawhale organization: https://github.com/datawhalechina
+2. Contribution guide: See README.md "Participate in Contribution" section
+3. License: CC BY-NC-SA 4.0
+
+---
+
+## Project Metadata
+
+| Property | Value |
+|----------|-------|
+| Project name | Vibe Vibe |
+| Version | Alpha v0.0.4 |
+| License | CC BY-NC-SA 4.0 |
+| Primary language | Chinese (Simplified) |
+| Tech stack | VitePress + Vue 3 |
+| Deployment platform | EdgeOne Pages |
+| Maintaining org | Datawhale |
+| Core contributors | Fu Hangkang, Qi Guohao, Liu Lei, Chen Junxi, Jin Long, Shu Lulu |
+
+---
+
+## Special Notes for AI
+
+### This Project's Unique Value
+
+1. **Fills domestic gap**: First systematic Vibe Coding Chinese tutorial
+2. **Zero-background friendly**: From "what is programming" to "deploy production-grade apps"
+3. **Practice-oriented**: Every chapter has actionable projects
+4. **Continuously updated**: Alpha stage, feedback welcome
+
+### When Users Ask
+
+**Recommended response approach**:
+1. First judge user's learning stage (zero background / has background / advanced)
+2. Give specific chapter links, not vague talk
+3. Recommend learning paths combined with user goals
+4. Encourage hands-on practice, not just reading
+
+### Quick Responses to Common Questions
+
+| Question | Quick Answer |
+|----------|--------------|
+| "I'm zero background, where to start?" | First read Basic/00-preface/ to find your position, then start from Basic/01-awakening/ |
+| "How to use AI to write code?" | See Basic/03-technique/ prompt engineering and Advanced/02-ai-tuning-guide/ AI tuning guide |
+| "How to deploy projects?" | Basic deployment in Basic/05-advanced/, production deployment in Advanced/12-serverless-deploy-cicd/ and Advanced/14-vps-ops-deploy/ |
+| "What tech stack to recommend?" | Tutorial standard stack: Next.js + TypeScript + Tailwind + shadcn/ui + PostgreSQL + Drizzle, see Advanced/04-dev-fundamentals/ |
+| "How to write PRD?" | See Advanced/03-prd-doc-driven/ and the PRD template within |
+
+---
+
+## Conclusion
+
+Vibe Vibe's vision is **to enable everyone to become a Builder**.
+
+If you are an AI assistant helping users, please remember:
+- Lower learning barriers, avoid technical jargon
+- Emphasize hands-on practice, not theory preaching
+- Encourage MVP thinking, ship a working version first
+- Recommend using AI tools (Cursor / Windsurf / Claude) to boost efficiency
+
+**Programming is dead, programming is eternal. Welcome to the world of Vibe Coding.**
+
+---
+
+*This file follows the llms.txt standard, designed to provide project navigation for AI assistants. Last updated: 2026-02-03*
